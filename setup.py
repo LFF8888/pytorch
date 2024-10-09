@@ -1,3 +1,31 @@
+import os
+
+# 禁用不适用的功能
+os.environ['USE_CUDA'] = '0'            # 禁用CUDA
+os.environ['USE_ROCM'] = '0'            # 禁用ROCm
+os.environ['USE_XPU'] = '0'             # 禁用Intel GPU支持
+os.environ['USE_MKLDNN'] = '0'          # 禁用MKLDNN
+os.environ['USE_FBGEMM'] = '0'          # 禁用FBGEMM
+os.environ['USE_DISTRIBUTED'] = '0'     # 禁用分布式计算
+os.environ['USE_GLOO'] = '0'            # 禁用GLOO
+os.environ['USE_QNNPACK'] = '0'         # 禁用QNNPACK
+os.environ['USE_OPENMP'] = '0'          # 禁用OpenMP
+
+# 优化编译器设置
+os.environ['CC'] = 'gcc'                # 使用GCC作为C编译器
+os.environ['CXX'] = 'g++'               # 使用G++作为C++编译器
+os.environ['CFLAGS'] = '-O3'            # 开启优化
+os.environ['CXXFLAGS'] = '-O3'
+
+# 并行编译
+os.environ['MAX_JOBS'] = str(os.cpu_count())     # 根据可用CPU核心数量并行编译
+
+# 设置BLAS
+os.environ['BLAS'] = 'OpenBLAS'
+
+# 启用新 C++ ABI（可选）
+os.environ['_GLIBCXX_USE_CXX11_ABI'] = '1'
+
 # Welcome to the PyTorch setup.py.
 # Environment variables you are probably interested in:
 #
